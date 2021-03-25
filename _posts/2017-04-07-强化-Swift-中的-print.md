@@ -3,7 +3,7 @@ layout:     post
 title:      强化 swift 中的 print
 subtitle:   强化 swift 中的 print 输出函数
 date:       2017-04-07
-author:     BY
+author:     EM
 header-img: img/post-bg-universe.jpg
 catalog: true
 tags:
@@ -78,4 +78,4 @@ public func printm(items: Any..., filename: String = #file, function: String = #
 - [《LOG 输出》](http://swifter.tips/log/) - 王巍 (@ONEVCAT)
 
 
-> 本文首次发布于 [BY Blog](http://daiem.github.io), 作者 [@柏荧(BY)](http://github.com/daiem) ,转载请保留原文链接.
+> 本文首次发布于 [EM Blog](http://daiem.github.io), 作者 [@恩民(EM)](http://github.com/daiem) ,转载请保留原文链接.

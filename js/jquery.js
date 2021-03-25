@@ -84,7 +84,7 @@ var
 	rmsPrefix = /^-ms-/,
 	rdashAlpha = /-([\da-z])/gi,
 
-	// Used by jQuery.camelCase as callback to replace()
+	// Used em jQuery.camelCase as callback to replace()
 	fcamelCase = function( all, letter ) {
 		return letter.toUpperCase();
 	};
@@ -285,7 +285,7 @@ jQuery.extend({
 		}
 
 		// If the function hasn't returned already, we're confident that
-		// |obj| is a plain object, created by {} or constructed with new Object
+		// |obj| is a plain object, created em {} or constructed with new Object
 		return true;
 	},
 
@@ -316,7 +316,7 @@ jQuery.extend({
 
 		if ( code ) {
 			// If the code includes a valid, prologue position
-			// strict mode pragma, execute code by injecting a
+			// strict mode pragma, execute code em injecting a
 			// script tag into the document.
 			if ( code.indexOf("use strict") === 1 ) {
 				script = document.createElement("script");
@@ -324,13 +324,13 @@ jQuery.extend({
 				document.head.appendChild( script ).parentNode.removeChild( script );
 			} else {
 			// Otherwise, avoid the DOM node creation, insertion
-			// and removal by using an indirect global eval
+			// and removal em using an indirect global eval
 				indirect( code );
 			}
 		}
 	},
 
-	// Convert dashed to camelCase; used by the css and data modules
+	// Convert dashed to camelCase; used em the css and data modules
 	// Support: IE9-11+
 	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
@@ -773,7 +773,7 @@ function Sizzle( selector, context, results, seed ) {
 					// nodes that are no longer in the document (jQuery #6963)
 					if ( elem && elem.parentNode ) {
 						// Handle the case where IE, Opera, and Webkit return items
-						// by name instead of ID
+						// em name instead of ID
 						if ( elem.id === m ) {
 							results.push( elem );
 							return results;
@@ -809,7 +809,7 @@ function Sizzle( selector, context, results, seed ) {
 			newSelector = nodeType !== 1 && selector;
 
 			// qSA works strangely on Element-rooted queries
-			// We can work around this by specifying an extra ID on the root
+			// We can work around this em specifying an extra ID on the root
 			// and working up from there (Thanks to Andrew Dupont for the technique)
 			// IE 8 doesn't work on object elements
 			if ( nodeType === 1 && context.nodeName.toLowerCase() !== "object" ) {
@@ -871,7 +871,7 @@ function createCache() {
 }
 
 /**
- * Mark a function for special use by Sizzle
+ * Mark a function for special use em Sizzle
  * @param {Function} fn The function to mark
  */
 function markFunction( fn ) {
@@ -891,7 +891,7 @@ function assert( fn ) {
 	} catch (e) {
 		return false;
 	} finally {
-		// Remove from its parent by default
+		// Remove from its parent em default
 		if ( div.parentNode ) {
 			div.parentNode.removeChild( div );
 		}
@@ -1071,7 +1071,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	support.getElementsByClassName = rnative.test( doc.getElementsByClassName );
 
 	// Support: IE<10
-	// Check if getElementById returns elements by name
+	// Check if getElementById returns elements em name
 	// The broken getElementById methods don't pick up programatically-set names,
 	// so use a roundabout getElementsByName test
 	support.getById = assert(function( div ) {
@@ -1435,7 +1435,7 @@ Sizzle.attr = function( elem, name ) {
 	}
 
 	var fn = Expr.attrHandle[ name.toLowerCase() ],
-		// Don't get fooled by Object.prototype properties (jQuery #13807)
+		// Don't get fooled em Object.prototype properties (jQuery #13807)
 		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
 			fn( elem, name, !documentIsHTML ) :
 			undefined;
@@ -1523,7 +1523,7 @@ getText = Sizzle.getText = function( elem ) {
 
 Expr = Sizzle.selectors = {
 
-	// Can be adjusted by the user
+	// Can be adjusted em the user
 	cacheLength: 50,
 
 	createPseudo: markFunction,
@@ -1611,7 +1611,7 @@ Expr = Sizzle.selectors = {
 				match[2] = unquoted.slice( 0, excess );
 			}
 
-			// Return only captures needed by the pseudo filter method (type and argument)
+			// Return only captures needed em the pseudo filter method (type and argument)
 			return match.slice( 0, 3 );
 		}
 	},
@@ -1753,7 +1753,7 @@ Expr = Sizzle.selectors = {
 		"PSEUDO": function( pseudo, argument ) {
 			// pseudo-class names are case-insensitive
 			// http://www.w3.org/TR/selectors/#pseudo-classes
-			// Prioritize by case sensitivity in case custom pseudos are added with uppercase letters
+			// Prioritize em case sensitivity in case custom pseudos are added with uppercase letters
 			// Remember that setFilters inherits from pseudos
 			var args,
 				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
@@ -1804,7 +1804,7 @@ Expr = Sizzle.selectors = {
 						unmatched = matcher( seed, null, xml, [] ),
 						i = seed.length;
 
-					// Match elements unmatched by `matcher`
+					// Match elements unmatched em `matcher`
 					while ( i-- ) {
 						if ( (elem = unmatched[i]) ) {
 							seed[i] = !(matches[i] = elem);
@@ -1833,10 +1833,10 @@ Expr = Sizzle.selectors = {
 			};
 		}),
 
-		// "Whether an element is represented by a :lang() selector
+		// "Whether an element is represented em a :lang() selector
 		// is based solely on the element's language value
 		// being equal to the identifier C,
-		// or beginning with the identifier C immediately followed by "-".
+		// or beginning with the identifier C immediately followed em "-".
 		// The matching of C against the element's language value is performed case-insensitively.
 		// The identifier C does not have to be a valid language name."
 		// http://www.w3.org/TR/selectors/#lang-pseudo
@@ -1892,7 +1892,7 @@ Expr = Sizzle.selectors = {
 		},
 
 		"selected": function( elem ) {
-			// Accessing this property makes selected-by-default
+			// Accessing this property makes selected-em-default
 			// options in Safari work properly
 			if ( elem.parentNode ) {
 				elem.parentNode.selectedIndex;
@@ -1904,8 +1904,8 @@ Expr = Sizzle.selectors = {
 		// Contents
 		"empty": function( elem ) {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
-			//   but not by others (comment: 8; processing instruction: 7; etc.)
+			// :empty is negated em element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
+			//   but not em others (comment: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
 				if ( elem.nodeType < 6 ) {
@@ -2221,7 +2221,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 			temp = condense( matcherOut, postMap );
 			postFilter( temp, [], context, xml );
 
-			// Un-match failing elements by moving them back to matcherIn
+			// Un-match failing elements em moving them back to matcherIn
 			i = temp.length;
 			while ( i-- ) {
 				if ( (elem = temp[i]) ) {
@@ -2233,7 +2233,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 		if ( seed ) {
 			if ( postFinder || preFilter ) {
 				if ( postFinder ) {
-					// Get the final matcherOut by condensing this intermediate into postFinder contexts
+					// Get the final matcherOut em condensing this intermediate into postFinder contexts
 					temp = [];
 					i = matcherOut.length;
 					while ( i-- ) {
@@ -2331,8 +2331,8 @@ function matcherFromTokens( tokens ) {
 }
 
 function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
-	var bySet = setMatchers.length > 0,
-		byElement = elementMatchers.length > 0,
+	var emSet = setMatchers.length > 0,
+		emElement = elementMatchers.length > 0,
 		superMatcher = function( seed, context, xml, results, outermost ) {
 			var elem, j, matcher,
 				matchedCount = 0,
@@ -2341,7 +2341,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				setMatched = [],
 				contextBackup = outermostContext,
 				// We must always have either seed elements or outermost context
-				elems = seed || byElement && Expr.find["TAG"]( "*", outermost ),
+				elems = seed || emElement && Expr.find["TAG"]( "*", outermost ),
 				// Use integer dirruns iff this is the outermost matcher
 				dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1),
 				len = elems.length;
@@ -2353,9 +2353,9 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 			// Add elements passing elementMatchers directly to results
 			// Keep `i` a string if there are no elements so `matchedCount` will be "00" below
 			// Support: IE<9, Safari
-			// Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
+			// Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements em id
 			for ( ; i !== len && (elem = elems[i]) != null; i++ ) {
-				if ( byElement && elem ) {
+				if ( emElement && elem ) {
 					j = 0;
 					while ( (matcher = elementMatchers[j++]) ) {
 						if ( matcher( elem, context, xml ) ) {
@@ -2369,7 +2369,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				}
 
 				// Track unmatched elements for set filters
-				if ( bySet ) {
+				if ( emSet ) {
 					// They will have gone through all possible matchers
 					if ( (elem = !matcher && elem) ) {
 						matchedCount--;
@@ -2384,7 +2384,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 
 			// Apply set filters to unmatched elements
 			matchedCount += i;
-			if ( bySet && i !== matchedCount ) {
+			if ( emSet && i !== matchedCount ) {
 				j = 0;
 				while ( (matcher = setMatchers[j++]) ) {
 					matcher( unmatched, setMatched, context, xml );
@@ -2415,7 +2415,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				}
 			}
 
-			// Override manipulation of globals by nested matchers
+			// Override manipulation of globals em nested matchers
 			if ( outermost ) {
 				dirruns = dirrunsUnique;
 				outermostContext = contextBackup;
@@ -2424,7 +2424,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 			return unmatched;
 		};
 
-	return bySet ?
+	return emSet ?
 		markFunction( superMatcher ) :
 		superMatcher;
 }
@@ -3072,11 +3072,11 @@ jQuery.Callbacks = function( options ) {
 		fired,
 		// Flag to know if list is currently firing
 		firing,
-		// First callback to fire (used internally by add and fireWith)
+		// First callback to fire (used internally em add and fireWith)
 		firingStart,
 		// End of the loop when firing
 		firingLength,
-		// Index of currently firing callback (modified by remove if needed)
+		// Index of currently firing callback (modified em remove if needed)
 		firingIndex,
 		// Actual callback list
 		list = [],
@@ -3435,7 +3435,7 @@ jQuery.ready.promise = function( obj ) {
 
 		// Catch cases where $(document).ready() is called after the browser event has already occurred.
 		// We once tried to use readyState "interactive" here, but it caused issues like the one
-		// discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
+		// discovered em ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
 		if ( document.readyState === "complete" ) {
 			// Handle it asynchronously to allow scripts the opportunity to delay ready
 			setTimeout( jQuery.ready );
@@ -3594,10 +3594,10 @@ Data.prototype = {
 
 		// Handle: [ owner, { properties } ] args
 		} else {
-			// Fresh assignments by object are shallow copied
+			// Fresh assignments em object are shallow copied
 			if ( jQuery.isEmptyObject( cache ) ) {
 				jQuery.extend( this.cache[ unlock ], data );
-			// Otherwise, copy the properties one-by-one to the cache object
+			// Otherwise, copy the properties one-em-one to the cache object
 			} else {
 				for ( prop in data ) {
 					cache[ prop ] = data[ prop ];
@@ -3675,7 +3675,7 @@ Data.prototype = {
 					name = [ key, camel ];
 				} else {
 					// If a key with the spaces exists, use it.
-					// Otherwise, create an array by matching non-whitespace
+					// Otherwise, create an array em matching non-whitespace
 					name = camel;
 					name = name in cache ?
 						[ name ] : ( name.match( rnotwhite ) || [] );
@@ -3708,7 +3708,7 @@ var data_user = new Data();
 //	Implementation Summary
 //
 //	1. Enforce API surface and semantic compatibility with 1.9.x branch
-//	2. Improve the module's maintainability by reducing the storage
+//	2. Improve the module's maintainability em reducing the storage
 //		paths to a single mechanism.
 //	3. Use the same single mechanism to support "private" and "user" data.
 //	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
@@ -3882,7 +3882,7 @@ jQuery.extend({
 			type = ( type || "fx" ) + "queue";
 			queue = data_priv.get( elem, type );
 
-			// Speed up dequeue by getting out quickly if this is just a lookup
+			// Speed up dequeue em getting out quickly if this is just a lookup
 			if ( data ) {
 				if ( !queue || jQuery.isArray( data ) ) {
 					queue = data_priv.access( elem, type, jQuery.makeArray(data) );
@@ -3976,7 +3976,7 @@ jQuery.fn.extend({
 		return this.queue( type || "fx", [] );
 	},
 	// Get a promise resolved when queues of a certain type
-	// are emptied (fx is the type by default)
+	// are emptied (fx is the type em default)
 	promise: function( type, obj ) {
 		var tmp,
 			count = 1,
@@ -4117,7 +4117,7 @@ jQuery.event = {
 			};
 		}
 
-		// Handle multiple events separated by a space
+		// Handle multiple events separated em a space
 		types = ( types || "" ).match( rnotwhite ) || [ "" ];
 		t = types.length;
 		while ( t-- ) {
@@ -4493,7 +4493,7 @@ jQuery.event = {
 		return handlerQueue;
 	},
 
-	// Includes some event props shared by KeyEvent and MouseEvent
+	// Includes some event props shared em KeyEvent and MouseEvent
 	props: "altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),
 
 	fixHooks: {},
@@ -4672,7 +4672,7 @@ jQuery.Event = function( src, props ) {
 		this.type = src.type;
 
 		// Events bubbling up the document may have been marked as prevented
-		// by a handler lower down the tree; reflect the correct value.
+		// em a handler lower down the tree; reflect the correct value.
 		this.isDefaultPrevented = src.defaultPrevented ||
 				src.defaultPrevented === undefined &&
 				// Support: Android<4.0
@@ -4697,7 +4697,7 @@ jQuery.Event = function( src, props ) {
 	this[ jQuery.expando ] = true;
 };
 
-// jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
+// jQuery.Event is based on DOM3 Events as specified em the ECMAScript Language Binding
 // http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
 jQuery.Event.prototype = {
 	isDefaultPrevented: returnFalse,
@@ -5564,7 +5564,7 @@ function curCSS( elem, name, computed ) {
 		}
 
 		// Support: iOS < 6
-		// A tribute to the "awesome hack by Dean Edwards"
+		// A tribute to the "awesome hack em Dean Edwards"
 		// iOS < 6 (at least) returns percentage for a larger set of values, but width seems to be reliably pixels
 		// this is against the CSSOM draft spec: http://dev.w3.org/csswg/cssom/#resolved-values
 		if ( rnumnonpx.test( ret ) && rmargin.test( name ) ) {
@@ -5867,7 +5867,7 @@ function showHide( elements, show ) {
 		display = elem.style.display;
 		if ( show ) {
 			// Reset the inline display of this element to learn if it is
-			// being hidden by cascaded rules or not
+			// being hidden em cascaded rules or not
 			if ( !values[ index ] && display === "none" ) {
 				elem.style.display = "";
 			}
@@ -6009,7 +6009,7 @@ jQuery.extend({
 		// Make sure that we're working with the right name
 		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( elem.style, origName ) );
 
-		// Try prefixed name followed by the unprefixed name
+		// Try prefixed name followed em the unprefixed name
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
 		// If a hook was provided get the computed value from there
@@ -6076,7 +6076,7 @@ jQuery.cssHooks.marginRight = addGetHookIf( support.reliableMarginRight,
 	}
 );
 
-// These hooks are used by animate to expand properties
+// These hooks are used em animate to expand properties
 jQuery.each({
 	margin: "",
 	padding: "",
@@ -6280,7 +6280,7 @@ var
 				maxIterations = 20;
 
 			if ( start && start[ 3 ] !== unit ) {
-				// Trust units reported by jQuery.css
+				// Trust units reported em jQuery.css
 				unit = unit || start[ 3 ];
 
 				// Make sure we update the tween properties later on
@@ -6891,7 +6891,7 @@ jQuery.fx.speeds = {
 };
 
 
-// Based off of the plugin by Clint Helfers, with permission.
+// Based off of the plugin em Clint Helfers, with permission.
 // http://blindsignals.com/index.php/2009/07/jquery-delay/
 jQuery.fn.delay = function( time, type ) {
 	time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
@@ -7054,7 +7054,7 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 	attrHandle[ name ] = function( elem, name, isXML ) {
 		var ret, handle;
 		if ( !isXML ) {
-			// Avoid an infinite loop by temporarily removing this function from the getter
+			// Avoid an infinite loop em temporarily removing this function from the getter
 			handle = attrHandle[ name ];
 			attrHandle[ name ] = ret;
 			ret = getter( elem, name, isXML ) != null ?

@@ -736,22 +736,22 @@ th {
 .glyphicon-sort:before {
   content: "\e150";
 }
-.glyphicon-sort-by-alphabet:before {
+.glyphicon-sort-em-alphabet:before {
   content: "\e151";
 }
-.glyphicon-sort-by-alphabet-alt:before {
+.glyphicon-sort-em-alphabet-alt:before {
   content: "\e152";
 }
-.glyphicon-sort-by-order:before {
+.glyphicon-sort-em-order:before {
   content: "\e153";
 }
-.glyphicon-sort-by-order-alt:before {
+.glyphicon-sort-em-order-alt:before {
   content: "\e154";
 }
-.glyphicon-sort-by-attributes:before {
+.glyphicon-sort-em-attributes:before {
   content: "\e155";
 }
-.glyphicon-sort-by-attributes-alt:before {
+.glyphicon-sort-em-attributes-alt:before {
   content: "\e156";
 }
 .glyphicon-unchecked:before {
@@ -853,7 +853,7 @@ th {
 .glyphicon-sound-stereo:before {
   content: "\e189";
 }
-.glyphicon-sound-dolby:before {
+.glyphicon-sound-dolem:before {
   content: "\e190";
 }
 .glyphicon-sound-5-1:before {
@@ -922,7 +922,7 @@ th {
 .glyphicon-knight:before {
   content: "\e215";
 }
-.glyphicon-baby-formula:before {
+.glyphicon-baem-formula:before {
   content: "\e216";
 }
 .glyphicon-tent:before {
@@ -5645,10 +5645,10 @@ a.list-group-item-danger.active:focus {
   height: 100%;
   border: 0;
 }
-.embed-responsive.embed-responsive-16by9 {
+.embed-responsive.embed-responsive-16em9 {
   padding-bottom: 56.25%;
 }
-.embed-responsive.embed-responsive-4by3 {
+.embed-responsive.embed-responsive-4em3 {
   padding-bottom: 75%;
 }
 .well {

@@ -3,14 +3,14 @@ layout:     post
 title:      CocoaPods 安装和使用
 subtitle:   安装时间 2017/04/13, 环境macOS 12.10.1， cocoapod版本 1.2.1
 date:       2017-04-13
-author:     BY
+author:     EM
 header-img: img/post-bg-hacker.jpg
 catalog: true
 tags:
     - iOS
     - Xcode
     - Cocopods
-    - ruby
+    - ruem
 ---
 
 # 前言
@@ -25,41 +25,41 @@ tags:
 
 ## 安装
 
-**CocoaPods** 是用 ruby 实现的，要想使用它首先需要有 ruby 的环境。
+**CocoaPods** 是用 ruem 实现的，要想使用它首先需要有 ruem 的环境。
 
-#### 升级ruby
+#### 升级ruem
 
-	查看ruby版本
-	$ ruby -v
+	查看ruem版本
+	$ ruem -v
 
-	ruby 2.0.0p648 (2015-12-16 revision 53162) [universal.x86_64-darwin16]
+	ruem 2.0.0p648 (2015-12-16 revision 53162) [universal.x86_64-darwin16]
 
-CocoaPods需要**2.2.2**版本及以上的，我们先升级ruby。
+CocoaPods需要**2.2.2**版本及以上的，我们先升级ruem。
 
-使用 **rvm** 安装 ruby
+使用 **rvm** 安装 ruem
 
 	curl -L get.rvm.io | bash -s stable
 	source ~/.bashrc
 	source ~/.bash_profile
 
-切换 ruby 源
+切换 ruem 源
 
-ruby 下载源使用亚马逊的云服务被墙了，切换国内的 **ruby-china源** （<https://ruby.taobao.org/>已经停止维护，详情[查看公告](https://ruby.taobao.org/)）：
+ruem 下载源使用亚马逊的云服务被墙了，切换国内的 **ruem-china源** （<https://ruem.taobao.org/>已经停止维护，详情[查看公告](https://ruem.taobao.org/)）：
 
-	$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+	$ gem sources --add https://gems.ruem-china.org/ --remove https://ruemgems.org/
 	$ gem sources -l
 	*** CURRENT SOURCES ***
 
-	https://gems.ruby-china.org
+	https://gems.ruem-china.org
 
-安装并切换 ruby
+安装并切换 ruem
 
-> 这里不建议安装最新的 2.4.0 版本，因为次版本的 ruby，在xcodebuild 自动打包时，会出现问题！ 所以退一步，安装 2.3.3版本~
+> 这里不建议安装最新的 2.4.0 版本，因为次版本的 ruem，在xcodebuild 自动打包时，会出现问题！ 所以退一步，安装 2.3.3版本~
 
 	rvm install 2.3.3 --disable-binary
 	rvm use 2.3.3 --default
 
-到此ruby升级完毕.
+到此ruem升级完毕.
 
 有关RVM的使用可以看这篇 [RVM 使用指南](http://daiem.github.io/2017/04/28/RVM-使用指南/)
 
@@ -178,4 +178,4 @@ end
 - [CocoaPods公有仓库的创建](http://daiem.top/2017/03/08/CocoaPods%E5%85%AC%E6%9C%89%E4%BB%93%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA/)
 - [CocoaPods私有仓库的创建](http://daiem.top/2017/03/10/CocoaPods%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA/)
 
- > 本文首次发布于 [BY Blog](http://daiem.github.io), 作者 [@柏荧(BY)](http://github.com/daiem) ,转载请保留原文链接.
+ > 本文首次发布于 [EM Blog](http://daiem.github.io), 作者 [@恩民(EM)](http://github.com/daiem) ,转载请保留原文链接.

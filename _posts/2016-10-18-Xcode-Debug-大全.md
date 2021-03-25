@@ -3,7 +3,7 @@ layout:     post
 title:      Xcode Debug 大全
 subtitle:   iOS开发中利用 Xcode 各种调试Bug方法
 date:       2016-10-18
-author:     BY
+author:     EM
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
@@ -132,7 +132,7 @@ LLDB 是一个有着 REPL 的特性和 C++ ,Python 插件的开源调试器。LL
 ###### *print*
 打印值
 
-缩写`p` 
+缩写`p`
 
 print是 `expression --` 的缩写
 
@@ -200,7 +200,7 @@ frame #0: 0x000000010a53bcd4 DebuggerDance`main + 68 at main.m:17
 
 ```
 
-###### Thread Return 
+###### Thread Return
 调试时，还有一个很棒的函数可以用来控制程序流程：thread return 。它有一个可选参数，在执行时它会把可选参数加载进返回寄存器里，然后立刻执行返回命令，跳出当前栈帧。这意味这函数剩余的部分不会被执行。这会给 ARC 的引用计数造成一些问题，或者会使函数内的清理部分失效。但是在函数的开头执行这个命令，是个非常好的隔离这个函数，伪造返回值的方式 。
 
 `(lldb) thread return NO`
@@ -229,7 +229,7 @@ instruments Xcode自带许多工具供大家使用，打开方式如下图：
 
 启用视图调试:运行app过程中，按下底部的Debug View Hierarchy 按钮，或者从菜单中选择Debug > View Debugging > Capture View Hierarchy 来启动视图调试。
 
-![](http://ww1.sinaimg.cn/large/006y8lVagw1f8vejy3rmgj30by01kmx8.jpg)
+![](http://ww1.sinaimg.cn/large/006y8lVagw1f8vejy3rmgj30em01kmx8.jpg)
 
 启动视图调试后，Xcode会对应用程序的视图层次拍一个快照并展示三维原型视图来探究用户界面的层级。该三维视图除了展示app的视图层次外，还展示每个视图的位置、顺序和视图尺寸，以及视图间的交互方式。
 

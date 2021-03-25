@@ -3,14 +3,14 @@ layout:     post
 title:      Objective-C Runtime 详解
 subtitle:   Runtime 详解
 date:       2017-02-04
-author:     BY
+author:     EM
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
     - Obj-C
     - Runtime
     - iOS
---- 
+---
 
 # 前言
 >最近在学习Runtime的知识，恰巧发现了这篇博客[《Objective-C Runtime》](http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/)，在此基础上，进行了些许补充说明,如有错误或其他想法，欢迎提出交流。
@@ -447,16 +447,16 @@ for (int i = 0; i < outCount; i++) {// 遍历
 控制台输出：
 
 ```
-propertyName：property1 
+propertyName：property1
 propertyAttributes:T@"NSString",&,N,V_property1
 --------
-propertyName：property2 
+propertyName：property2
 propertyAttributes:T@"NSString",&,N,V_property2
 --------
-propertyName：age 
+propertyName：age
 propertyAttributes:Ti,N,V_age
 --------
-propertyName：ID 
+propertyName：ID
 propertyAttributes:Tq,N,V_ID
 ```
 
@@ -537,7 +537,7 @@ PS：有木有发现这些函数的命名规律哦？带 `“Super”` 的是消
 {
     id  target = getTheReceiver();
     SEL method = getTheMethod();
- 
+
     if ( target == self || method == _cmd )
         return nil;
     return [target performSelector:method];
@@ -727,14 +727,14 @@ struct objc_ivar {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        
+
         Student *student = [[Student alloc] init];
         Ivar age_ivar = class_getInstanceVariable(object_getClass(student), "age");//获取"age"的ivar
         int *age_pointer = (int *)((__bridge void *)(student) + ivar_getOffset(age_ivar));//定义一个指向age_ivar的指针：指向地址为 student对象地址 + age_ivar的偏移量（ivar_offset）
         NSLog(@"age ivar offset = %td", ivar_getOffset(age_ivar));//输出offset偏移量
         *age_pointer = 10;//对指针age_pointer指向的变量（age_ivar）赋值
         NSLog(@"%@", student);//输出重写的description方法
-        
+
     }
     return 0;
 }
@@ -779,7 +779,7 @@ enum {
 这里摘抄一个 NSHipster 的例子
 
 ```
-#import <objc/runtime.h> 
+#import <objc/runtime.h>
 
 @implementation UIViewController (Tracking)
 
@@ -787,8 +787,8 @@ enum {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];
-        // When swizzling a class method, use the following: 
-        // Class class = object_getClass((id)self); 
+        // When swizzling a class method, use the following:
+        // Class class = object_getClass((id)self);
         SEL originalSelector = @selector(viewWillAppear:);
         SEL swizzledSelector = @selector(xxx_viewWillAppear:);
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
@@ -808,7 +808,7 @@ enum {
         }
     });
 }
-#pragma mark - Method Swizzling 
+#pragma mark - Method Swizzling
 - (void)xxx_viewWillAppear:(BOOL)animated {
     [self xxx_viewWillAppear:animated];
     NSLog(@"viewWillAppear: %@", self);

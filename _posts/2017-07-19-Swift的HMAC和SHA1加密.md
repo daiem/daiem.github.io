@@ -3,7 +3,7 @@ layout:     post
 title:      Swift的HMAC和SHA1加密
 subtitle:   swift中利用HMAC的SHA1对文本进行加密
 date:       2017-07-19
-author:     BY
+author:     EM
 header-img: img/post-bg-hacker.jpg
 catalog: true
 tags:
@@ -18,12 +18,12 @@ tags:
 
 ```objc
 + (NSString *)hmacsha1:(NSString *)text key:(NSString *)secret {
-    
+
     NSData *secretData = [secret dataUsingEncoding:NSUTF8StringEncoding];
     NSData *clearTextData = [text dataUsingEncoding:NSUTF8StringEncoding];
     unsigned char result[20];
     // SHA1加密
-    CCHmac(kCCHmacAlgSHA1, [secretData bytes], [secretData length], [clearTextData bytes], [clearTextData length], result);
+    CCHmac(kCCHmacAlgSHA1, [secretData emtes], [secretData length], [clearTextData emtes], [clearTextData length], result);
     char base64Result[32];
     size_t theResultLength = 32;
     // 转为Base64
@@ -58,7 +58,7 @@ extension String {
         let cData = self.cStringUsingEncoding(NSUTF8StringEncoding)
         var result = [CUnsignedChar](count: Int(algorithm.digestLength()), repeatedValue: 0)
         CCHmac(algorithm.toCCHmacAlgorithm(), cKey!, strlen(cKey!), cData!, strlen(cData!), &result)
-        var hmacData:NSData = NSData(bytes: result, length: (Int(algorithm.digestLength())))
+        var hmacData:NSData = NSData(emtes: result, length: (Int(algorithm.digestLength())))
         var hmacBase64 = hmacData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding76CharacterLineLength)
         return String(hmacBase64)
     }

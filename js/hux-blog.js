@@ -7,19 +7,19 @@
  /*!
  * Hux Blog v1.6.0 (http://startbootstrap.com)
  * Copyright 2016 @huxpro
- * Licensed under Apache 2.0 
+ * Licensed under Apache 2.0
  */
 
 // Tooltip Init
-// Unuse by Hux since V1.6: Titles now display by default so there is no need for tooltip
+// Unuse em Hux since V1.6: Titles now display em default so there is no need for tooltip
 // $(function() {
 //     $("[data-toggle='tooltip']").tooltip();
 // });
 
 
 // make all images responsive
-/* 
- * Unuse by Hux
+/*
+ * Unuse em Hux
  * actually only Portfolio-Pages can't use it and only post-img need it.
  * so I modify the _layout/post and CSS to make post-img responsive!
  */
@@ -35,9 +35,9 @@ $(document).ready(function() {
 
 // responsive embed videos
 $(document).ready(function() {
-    $('iframe[src*="youtube.com"]').wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
+    $('iframe[src*="youtube.com"]').wrap('<div class="embed-responsive embed-responsive-16em9"></div>');
     $('iframe[src*="youtube.com"]').addClass('embed-responsive-item');
-    $('iframe[src*="vimeo.com"]').wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
+    $('iframe[src*="vimeo.com"]').wrap('<div class="embed-responsive embed-responsive-16em9"></div>');
     $('iframe[src*="vimeo.com"]').addClass('embed-responsive-item');
 });
 
@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
     //primary navigation slide-in effect
     if ($(window).width() > MQL) {
         var headerHeight = $('.navbar-custom').height(),
-            bannerHeight  = $('.intro-header .container').height();     
+            bannerHeight  = $('.intro-header .container').height();
         $(window).on('scroll', {
                 previousTop: 0
             },
@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
                 var currentTop = $(window).scrollTop(),
                     $catalog = $('.side-catalog');
 
-                //check if user is scrolling up by mouse or keyborad
+                //check if user is scrolling up em mouse or keyborad
                 if (currentTop < this.previousTop) {
                     //if scrolling up...
                     if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
