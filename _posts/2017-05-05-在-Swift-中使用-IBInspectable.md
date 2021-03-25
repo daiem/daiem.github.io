@@ -13,7 +13,7 @@ tags:
 ---
 
 
-> 本文首次发布于 [BY Blog](http://qiubaiying.github.io), 作者 [@柏荧(BY)](http://github.com/qiubaiying) ,转载请保留原文链接.
+> 本文首次发布于 [BY Blog](http://daiem.github.io), 作者 [@柏荧(BY)](http://github.com/daiem) ,转载请保留原文链接.
 
 # 前言
 
@@ -23,7 +23,7 @@ tags:
 
 但是缺点也很明显，那就是有一些属性没有暴露在 IB 的设置面板中。这时候就要使用 `@IBInspectable` 在 IB 面板中添加这些没有的属性。
 
-关于在 OC 中使用 `IBInspectable` 可以看一下我的 [这篇文章](http://qiubaiying.top/2016/12/01/%E5%BF%AB%E9%80%9F%E6%B7%BB%E5%8A%A0%E5%9C%86%E8%A7%92%E5%92%8C%E6%8F%8F%E8%BE%B9/#高级)
+关于在 OC 中使用 `IBInspectable` 可以看一下我的 [这篇文章](http://daiem.top/2016/12/01/%E5%BF%AB%E9%80%9F%E6%B7%BB%E5%8A%A0%E5%9C%86%E8%A7%92%E5%92%8C%E6%8F%8F%E8%BE%B9/#高级)
 
 # 正文
 
@@ -39,13 +39,13 @@ extension UIView {
         get {
             return layer.cornerRadius
         }
-        
+
         set {
             layer.cornerRadius = newValue
             layer.masksToBounds = newValue > 0
         }
     }
-    
+
     @IBInspectable var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -54,7 +54,7 @@ extension UIView {
             layer.borderWidth = newValue > 0 ? newValue : 0
         }
     }
-    
+
     @IBInspectable var borderColor: UIColor {
         get {
             return UIColor(cgColor: layer.borderColor!)
@@ -63,7 +63,7 @@ extension UIView {
             layer.borderColor = newValue.cgColor
         }
     }
-    
+
 }
 ```
 
@@ -156,6 +156,6 @@ extension UITextField {
 合理的使用`@IBInspectable` 能减少很多的模板代码，提高我们的开发效率。
 
 > 参考
-> 
+>
 > -  [《再看关于 Storyboard 的一些争论》](https://onevcat.com/2017/04/storyboard-argue/)
 > - [《@IBDesignable and @IBInspectable in Swift 3》](https://medium.com/@Anantha1992/ibdesignable-and-ibinspectable-in-swift-3-702d7dd00ca)

@@ -10,7 +10,7 @@ tags:
     - Obj-C
     - Runtime
     - iOS
---- 
+---
 
 # 前言
 
@@ -147,7 +147,7 @@ for (int i = 0; i < count; i++) {
     NSLog(@"methodName = %@",NSStringFromSelector(methodName));
     NSLog(@"dst = %c", dst);
 }
-    
+
  // 输出
  methodName = methodAOfClassAWithArg:
  dst = v
@@ -194,7 +194,7 @@ struct objc_method {
     SEL method_name                                          OBJC2_UNAVAILABLE;
     char *method_types                                       OBJC2_UNAVAILABLE;
     IMP method_imp                                           OBJC2_UNAVAILABLE;
-} 
+}
 ```
 
 但要区分`Method *methods`与`Method method`的区别，这是比较基础C语言知识。还有`Uint32`是OC定义的`unsigned int`类型`typedef unsigned int UInt32;`
@@ -204,7 +204,7 @@ struct objc_method {
 ```
 A void v
 A method selector (SEL)  ：
-An object (whether statically typed or typed id) @ 
+An object (whether statically typed or typed id) @
 ```
 
 `method_getTypeEncoding(method)`方法可以输出返回值，参数类型以及接收器类型。我们看输出的`v24@0:8@16`，分析上面的说明就可以知道： `v24`返回类型为`viod`,`@0`接收器类型为`id`,`@16`参数类型为`id`
@@ -237,10 +237,10 @@ objc_property_t *properties = class_copyPropertyList(LenderClass, &outCount);
 for (int i = 0; i < outCount; i++) {
 
     objc_property_t property = properties[i];
-    
+
     const char *propertyName = property_getName(property);// 获取属性名
     const char *propertyAttributes = property_getAttributes(property);// 获取属性描述
-    
+
     printf("propertyName：%s \n", propertyName);
     printf("propertyAttributes:%s\n--------\n", propertyAttributes);//属性名及描述
 }
@@ -248,16 +248,16 @@ for (int i = 0; i < outCount; i++) {
 
 ```
 // 输出
-propertyName：privateProperty1 
+propertyName：privateProperty1
 propertyAttributes:T@"NSString",C,N,V_privateProperty1
 --------
-propertyName：privateProperty2 
+propertyName：privateProperty2
 propertyAttributes:T@"NSString",C,N,V_privateProperty2
 --------
-propertyName：publicProperty1 
+propertyName：publicProperty1
 propertyAttributes:T@"NSString",C,N,V_publicProperty1
 --------
-propertyName：publicProperty2 
+propertyName：publicProperty2
 propertyAttributes:T@"NSString",C,N,V_publicProperty2
 --------
 ```
@@ -275,7 +275,7 @@ for(int i = 0; i < numIvars; i++) {
     Ivar ivar = ivars[i];
     const char *ivarName = ivar_getName(ivar);
     const char *ivarType = ivar_getTypeEncoding(ivar);// 获取类型
-    
+
     printf("ivarName:%s\n", ivarName);
     printf("ivarType:%s\n------\n", ivarType);
 }
@@ -374,11 +374,11 @@ ivarType:@
 调用：
 
 ```
-classA.name = @"邱帅";
+classA.name = @"戴帅";
 NSLog(@"%@",classA.name);
 
 // 输出
-2016-11-21 16:18:48.084 UseRuntime[4392:1325037] 邱帅
+2016-11-21 16:18:48.084 UseRuntime[4392:1325037] 戴帅
 ```
 可以看出添加属性成功！
 
@@ -387,10 +387,10 @@ NSLog(@"%@",classA.name);
 ```
 OBJC_EXPORT void objc_setAssociatedObject(id object, const void *key, id value, objc_AssociationPolicy policy)
     OBJC_AVAILABLE(10.6, 3.1, 9.0, 1.0);
-    
+
 OBJC_EXPORT id objc_getAssociatedObject(id object, const void *key)
     OBJC_AVAILABLE(10.6, 3.1, 9.0, 1.0);
-    
+
 OBJC_EXPORT void objc_removeAssociatedObjects(id object)
     OBJC_AVAILABLE(10.6, 3.1, 9.0, 1.0);
 
@@ -404,7 +404,7 @@ OBJC_EXPORT void objc_removeAssociatedObjects(id object)
 //利用静态变量地址唯一不变的特性
 1、static void *strKey = &strKey;
 
-2、static NSString *strKey = @"strKey"; 
+2、static NSString *strKey = @"strKey";
 
 3、static char strKey;
 ```
@@ -416,11 +416,11 @@ OBJC_EXPORT void objc_removeAssociatedObjects(id object)
 
 ```
 typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
-    OBJC_ASSOCIATION_ASSIGN = 0,           
-    OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1,              
-    OBJC_ASSOCIATION_COPY_NONATOMIC = 3,                                                  
-    OBJC_ASSOCIATION_RETAIN = 01401,       
-    OBJC_ASSOCIATION_COPY = 01403                                               
+    OBJC_ASSOCIATION_ASSIGN = 0,
+    OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1,
+    OBJC_ASSOCIATION_COPY_NONATOMIC = 3,
+    OBJC_ASSOCIATION_RETAIN = 01401,
+    OBJC_ASSOCIATION_COPY = 01403
 };
 ```
 `objc_getAssociatedObject()` 方法通过 `object` 与 `Key` 直接获取关联的属性值
@@ -431,7 +431,7 @@ typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
 
 ```
 // 有属性输出
-propertyName：name 
+propertyName：name
 propertyAttributes:T@"NSString",&,N
 ```
 没有成员变量 `_name`，进一步说明分类中不能添加成员变量！其本质是添加属性与分类之间关联。
@@ -460,10 +460,10 @@ propertyAttributes:T@"NSString",&,N
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [classA methodAOfClassAWithArg:@"classA 发出的 A方法"];
     [classB methodAOfClassBWithArg:@"classB 发出的 A方法"];
-}    
+}
 
 // 输出
 
@@ -471,7 +471,7 @@ propertyAttributes:T@"NSString",&,N
 2016-11-22 13:07:15.151 UseRuntime[1015:533335]  methodAOfClassA arg = classB 发出的 A方法
 ```
 
-首先交换方法写在 `+(void)load`,在程序的一开始就调用执行，你将不会碰到并发问题。 
+首先交换方法写在 `+(void)load`,在程序的一开始就调用执行，你将不会碰到并发问题。
 
 我们可以发现两个方法的实现过程以及对换。
 
@@ -489,14 +489,14 @@ propertyAttributes:T@"NSString",&,N
 
     SEL ori_selector = @selector(arrayByAddingObject:);
     SEL my_selector = @selector(my_arrayByAddingObject:);
-    
+
     Method ori_method = class_getInstanceMethod([NSArray class], ori_selector);
     Method my_method  = class_getInstanceMethod([NSArray class], my_selector);
-    
+
     if (([NSArray class], ori_selector, method_getImplementation(my_method), method_getTypeEncoding(my_method))) {
-        
+
         class_replaceMethod([NSArray class], my_selector, method_getImplementation(ori_method), method_getTypeEncoding(ori_method));
-        
+
     } else {
         method_exchangeImplementations(ori_method, my_method);
     }
@@ -564,7 +564,7 @@ void dynamicMethodIMP(id self, SEL _cmd) {
 }
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
-    
+
     if (sel == @selector(resolveThisMethodDynamically)) {
         class_addMethod([self class], sel, (IMP) dynamicMethodIMP, "v@:");
         return YES;
@@ -600,21 +600,21 @@ performSelector:@selector(resolveThisMethodDynamically)];
 - (void)by_modelSetDictionary:(NSDictionary *)dic {
 
     Class cls = [self class];
-    
+
     // 遍历本类和父类的变量
     while (cls) {
         //获取所有成员变量
         unsigned int outCount = 0;
         Ivar *ivars = class_copyIvarList(cls, &outCount);
-        
+
         for (int i = 0; i < outCount; i++) {
             Ivar ivar = ivars[i];
-            
+
             // 获取变量名
             NSMutableString *ivar_Name = [NSMutableString stringWithUTF8String:ivar_getName(ivar)];
-        
+
             [ivar_Name replaceCharactersInRange:NSMakeRange(0, 1) withString:@""];// _ivar -> ivar
-            
+
             //
             NSString *key = [ivar_Name copy];
             if ([key isEqualToString:@"dece"]) {
@@ -623,23 +623,23 @@ performSelector:@selector(resolveThisMethodDynamically)];
             if ([key isEqualToString:@"ID"]) {
                 key = @"id";
             }
-            
+
             id value = dic[key];
             if (!value) continue;
-            
+
             // 拼接SEL    ivar -> setIvar:
-            
+
             NSString *cap = [ivar_Name substringToIndex:1];
             cap = cap.uppercaseString; // a->A
             [ivar_Name replaceCharactersInRange:NSMakeRange(0, 1) withString:cap];
             [ivar_Name insertString:@"set" atIndex:0];
             [ivar_Name appendString:@":"];
-            
+
             SEL selector = NSSelectorFromString(ivar_Name);
-            
+
             // 判断类型并发送消息
             NSString *type = [NSString stringWithUTF8String:ivar_getTypeEncoding(ivar)];
-            
+
             if ([type hasPrefix:@"@"]) { // 对象类型
                 objc_msgSend(self, selector, value);
             } else { // 非对象类型
@@ -653,13 +653,13 @@ performSelector:@selector(resolveThisMethodDynamically)];
                     objc_msgSend(self, selector, [value longLongValue]);
                 }
             }
-            
-            
+
+
         }
         // 获取父类进行遍历变量
         cls = class_getSuperclass(cls);
     }
-    
+
 }
 
 ```
@@ -693,7 +693,7 @@ performSelector:@selector(resolveThisMethodDynamically)];
 使用我们的转模型方法：
 
 ```
-NSDictionary *dic = @{ @"name":@"邱帅", @"age": @(23), @"idNumber":@(1234567)};
+NSDictionary *dic = @{ @"name":@"戴帅", @"age": @(23), @"idNumber":@(1234567)};
 
 Student *stu = [Student new];
 [stu by_modelSetDictionary:dic];
@@ -701,7 +701,7 @@ Student *stu = [Student new];
 NSLog(@"%@", [NSString stringWithFormat:@"%@, %d, %d", stu.name, stu.age, stu.idNumber]);
 
 // 输出
-2016-11-24 15:32:46.351 Demo_字典转模型（Runtime）[2131:884627] 邱帅, 23, 1234567
+2016-11-24 15:32:46.351 Demo_字典转模型（Runtime）[2131:884627] 戴帅, 23, 1234567
 ```
 
 该方法先利用我们上面介绍的`class_copyIvarList()`获取类中的成员变量列表，然后进行遍历，拼接字符串`setIvar:`，最后调用`objc_msgSend()`直接发送设置变量的消息，完成属性的赋值。
@@ -710,7 +710,7 @@ NSLog(@"%@", [NSString stringWithFormat:@"%@, %d, %d", stu.name, stu.age, stu.id
 while (cls) {
 
 	//code..
-	
+
  cls = class_getSuperclass(cls);
 }
 ```

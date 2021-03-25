@@ -12,9 +12,9 @@ tags:
     - Git
 ---
 
-> 本文发布于 [BY Blog](http://qiubaiying.github.io)、[简书](http://www.jianshu.com/p/d2d98298b1b8) 转载请保留链接
-> 
-> 上一篇文章 [《CocoaPods公有仓库的创建》](http://qiubaiying.top/2017/03/08/CocoaPods公有仓库的创建/)
+> 本文发布于 [BY Blog](http://daiem.github.io)、[简书](http://www.jianshu.com/p/d2d98298b1b8) 转载请保留链接
+>
+> 上一篇文章 [《CocoaPods公有仓库的创建》](http://daiem.top/2017/03/08/CocoaPods公有仓库的创建/)
 
 # 前言
 
@@ -26,7 +26,7 @@ tags:
 
 虽然也能用，但是和CocoaPods本身的结构设计就不相符。
 
-在上一篇[《CocoaPods公有仓库的创建》](http://qiubaiying.top/2017/03/08/CocoaPods公有仓库的创建/)中我们了解到，`master` 目录中只存放 代码库 的描述文件，而不是存放代码。就像这样
+在上一篇[《CocoaPods公有仓库的创建》](http://daiem.top/2017/03/08/CocoaPods公有仓库的创建/)中我们了解到，`master` 目录中只存放 代码库 的描述文件，而不是存放代码。就像这样
 
 ![](https://ww4.sinaimg.cn/large/006tKfTcgy1fdgf4l54rxj30ya09ujst.jpg)
 
@@ -53,8 +53,8 @@ tags:
 
 回到终端，将这个远程的私有版本仓库添加到本地，`repo` 就是 repository 储存库的缩写。
 
-	$ pod repo add MyRepo https://git.oschina.net/baiyingqiu/MyRepo.git
-	
+	$ pod repo add MyRepo https://git.oschina.net/emdai/MyRepo.git
+
 查看在 Finder 目录 `~/.cocoapods/repos`， 可以发现增加了一个 MyRepo 的储存库
 
 ![](https://ww2.sinaimg.cn/large/006tKfTcgy1fdgfyfl6v6j316y0piwhz.jpg)
@@ -92,17 +92,17 @@ Pod::Spec.new do |s|
   s.license      = "MIT"          # 开源证书
   s.summary      = "私人pod代码" # 项目简介
 
-  s.homepage     = "https://git.oschina.net/baiyingqiu/MyAdditions" # 仓库的主页
-  s.source       = { :git => "https://git.oschina.net/baiyingqiu/MyAdditions.git", :tag => "#{s.version}" }#你的仓库地址，不能用SSH地址
+  s.homepage     = "https://git.oschina.net/emdai/MyAdditions" # 仓库的主页
+  s.source       = { :git => "https://git.oschina.net/emdai/MyAdditions.git", :tag => "#{s.version}" }#你的仓库地址，不能用SSH地址
   s.source_files = "MyAdditions/*.{h,m}" # 你代码的位置， BYPhoneNumTF/*.{h,m} 表示 BYPhoneNumTF 文件夹下所有的.h和.m文件
   s.requires_arc = true # 是否启用ARC
   s.platform     = :ios, "7.0" #平台及支持的最低版本
   # s.frameworks   = "UIKit", "Foundation" #支持的框架
   # s.dependency   = "AFNetworking" # 依赖库
-  
+
   # User
-  s.author             = { "BY" => "qiubaiyingios@163.com" } # 作者信息
-  s.social_media_url   = "http://qiubaiying.github.io" # 个人主页
+  s.author             = { "BY" => "daiemios@163.com" } # 作者信息
+  s.social_media_url   = "http://daiem.github.io" # 个人主页
 
 end
 ```
@@ -115,7 +115,7 @@ end
 然后开始验证我们的仓库配置是否正确，并按照要求进行修改
 
 	$ pod lib lint
-	
+
 一般出现错误警告，需要添加 `--private` 或者 `--allow-warnings`，就可以通过验证
 
 	$ pod lib lint --private
@@ -123,11 +123,11 @@ end
 验证成功后出现
 
 	 -> MyAdditions (0.0.1)
-	 
+
 	MyAdditions passed validation.
-	
+
 #### 将描述文件推送到版本库
-	
+
 将项目打上标签推到远程仓库，标签号 和 版本号对应 都是`0.0.1`
 
 最后将我们的代码仓库的描述信息，push 到我们的版本仓库中
@@ -137,15 +137,15 @@ end
 这时会对远程仓库进行验证，成功的话就会在 `~/.cocoapods/repos/MyRep`中发现新增的仓库描述信息了
 
 ![](https://ww3.sinaimg.cn/large/006tKfTcgy1fdgo62knrwj31ko0s8784.jpg)
-	
+
 若是出现错误信息
 
 	[!] The repo `MyRepo` at `../.cocoapods/repos/MyRepo` is not clean
-	
+
 更新下我们的版本库，
 
 	$ pod repo update MyRepo
-	
+
 
 再继续上传即可。
 
@@ -163,19 +163,19 @@ end
 	-> MyAdditions (0.0.1)
 	   Some category of the framework and UIKit
 	   pod 'MyAdditions', '~> 0.0.1'
-	   - Homepage: https://git.oschina.net/baiyingqiu/MyAdditions
-	   - Source:   https://git.oschina.net/baiyingqiu/MyAdditions.git
+	   - Homepage: https://git.oschina.net/emdai/MyAdditions
+	   - Source:   https://git.oschina.net/emdai/MyAdditions.git
 	   - Versions: 0.0.1 [MyRepo repo]
 	(END)
-	
+
 ### 私人pod库的使用
 
 使用私人pod库的需要在`Podflie`中添加这句话，指明你的版本库地址。
 
-	source ‘https://git.oschina.net/baiyingqiu/MyRepo.git’
+	source ‘https://git.oschina.net/emdai/MyRepo.git’
 **注意**是版本库的地址，而不是代码库的地址，很多教程都把我搞晕了~
 
-	
+
 若有还使用了公有的pod库，需要把公有库地址也带上
 
 	source ‘https://github.com/CocoaPods/Specs.git’
@@ -183,17 +183,17 @@ end
 最后的`Podflie`文件变成这个样子
 
 	source ‘https://github.com/CocoaPods/Specs.git’
-	source ‘https://git.oschina.net/baiyingqiu/MyRepo.git’
-	
+	source ‘https://git.oschina.net/emdai/MyRepo.git’
+
 	platform :ios, '8.0'
-	
+
 	target ‘MyPodTest’ do
 	use_frameworks!
-	
+
 	pod “BYPhoneNumTF” #公有库
 	pod ‘MyAdditions’ #我们的私有库
 	pod ‘BYAdditions’ #这是我又添加到版本库中的另一个代码库
-	
+
 	end
 
 测试：
@@ -206,7 +206,7 @@ end
 
 <img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fdhkgtfn98j30ee0hwq6y.jpg" width="250">
 
-回到Fender中 `~/.cocoapods/repos`,会发现 repos 中增加了一个pod版本库。 
+回到Fender中 `~/.cocoapods/repos`,会发现 repos 中增加了一个pod版本库。
 
 ![](https://ww2.sinaimg.cn/large/006tKfTcgy1fdhlc59rl9j30ya08y0ub.jpg)
 
@@ -221,7 +221,7 @@ end
 
 # 结语
 
-通过 [《CocoaPods私有仓库的创建》](http://qiubaiying.top/2017-03-10-CocoaPods私有仓库的创建/) 和 [《CocoaPods公有仓库的创建](http://qiubaiying.top/2017/03/08/CocoaPods公有仓库的创建/)》这两篇文章，相信大家对CocoaPods的工作原理都有了更深层次的了解。
+通过 [《CocoaPods私有仓库的创建》](http://daiem.top/2017-03-10-CocoaPods私有仓库的创建/) 和 [《CocoaPods公有仓库的创建](http://daiem.top/2017/03/08/CocoaPods公有仓库的创建/)》这两篇文章，相信大家对CocoaPods的工作原理都有了更深层次的了解。
 
 在写博客和和创建的过程中，踩了不少的坑（😀前人教程留下的），很多的东西只有自己操作完才能真正的领会。
 
